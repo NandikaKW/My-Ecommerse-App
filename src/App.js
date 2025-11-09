@@ -25,7 +25,6 @@ import Shop from "./pages/Shop/Shop";
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import JournalDetail from "./pages/Journal/JournalDetail";
-//Routes appear here
 
 
 const Layout = () => {
@@ -35,7 +34,7 @@ const Layout = () => {
       <HeaderBottom />
       <SpecialCase />
       <ScrollRestoration />
-      <Outlet />
+        <Outlet />
       <Footer />
       <FooterBottom />
     </div>
