@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# 🛒 Orebi - E-Commerce Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Banner](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Banner.png)
 
-## Available Scripts
+Orebi is a modern **React-based e-commerce application**. Browse products, manage your cart, make payments, and track your shopping journal — all in a sleek, user-friendly interface.  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📌 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🏠 **[Home](#home)**
+- 💡 **[About](#about)**
+- 🖼 **[Screenshots](#screenshots)**
+  - 🏠 Home Pages
+  - 🛍 Products
+  - 🛒 Cart
+  - 💳 Payment
+  - 📝 Journal
+  - 🔑 Authentication
+  - 📞 Contact
+- 🚀 **[Getting Started](#getting-started)**
+  - ⚙️ Prerequisites
+- 📜 **[Available Scripts](#available-scripts)**
+  - ▶️ `npm start`
+  - 🧪 `npm test`
+  - 🏗 `npm run build`
+  - ⚠️ `npm run eject`
+- 🌐 **[Deployment](#deployment)**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 💡 About
+![About](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/About.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Orebi provides a **seamless shopping experience** with:  
+- 🛍 Product catalog  
+- 🛒 Shopping cart  
+- 💳 Payment processing  
+- 📖 Personal shopping journal  
+- 🔐 User authentication (Sign In / Sign Up)  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🖼 Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🏠 Home Pages
+![Home Page 1](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/HomePage-1.png)
+![Home Page 2](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/HomePage-2.png)
+![Home Page 3](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/HomePage.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛍 Products
+![Product 1](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Product-1.png)
+![Product 2](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Product-3.png)
+![Product 3](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Products.png)
 
-### `npm run eject`
+### 🛒 Cart
+![Cart](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Cart.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 💳 Payment
+![Payment](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Payment.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📝 Journal
+![Journal](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Journal.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🔑 Authentication
+![Sign In](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/SignIn.png)
+![Sign Up](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/SignUp.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 📞 Contact
+![Contact](https://github.com/NandikaKW/My-Ecommerse-App/blob/ba0c48f7a7a421878f10d27553d01f7f8adf52fe/Contact.png)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚀 Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 
-### Code Splitting
+### ⚙️ Prerequisites
+- Node.js installed  
+- npm or yarn package manager
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📜 Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### ▶️ `npm start`  
+Runs the app in **development mode**.  
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.  
 
-### Making a Progressive Web App
+### 🧪 `npm test`  
+Launches the **test runner** in interactive watch mode.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 🏗 `npm run build`  
+Builds the app for **production** in the `build` folder.  
 
-### Advanced Configuration
+### ⚠️ `npm run eject`  
+**One-way operation!** Once ejected, you can't go back.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🌐 Deployment
+Deploy your app on platforms like:  
+- **Netlify**  
+- **Vercel**  
+- **GitHub Pages**  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
