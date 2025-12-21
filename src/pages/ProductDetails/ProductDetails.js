@@ -5,7 +5,6 @@ import ProductInfo from "../../components/pageProps/productDetails/ProductInfo";
 import ProductsOnSale from "../../components/pageProps/productDetails/ProductsOnSale";
 
 const ProductDetails = () => {
-  //object contains details about the current route
   const location = useLocation();
   const [prevLocation, setPrevLocation] = useState("");
   const [productInfo, setProductInfo] = useState([]);
@@ -40,5 +39,6 @@ const ProductDetails = () => {
     </div>
   );
 };
+
 
 export default ProductDetails;

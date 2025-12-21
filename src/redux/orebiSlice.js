@@ -4,12 +4,25 @@ const initialState = {
   userInfo: [],
   products: [],
   wishlist: [], // Added wishlist array
+  couponDiscount: { discount: 0, code: "" }, // Add coupon discount
 };
 
 export const orebiSlice = createSlice({
   name: "orebi",
   initialState,
   reducers: {
+      // Add coupon reducer
+    applyCoupon: (state, action) => {
+      state.couponDiscount = {
+        discount: action.payload.discount,
+        code: action.payload.code
+      };
+    },
+    
+    // Add remove coupon reducer
+    removeCoupon: (state) => {
+      state.couponDiscount = { discount: 0, code: "" };
+    },
     // Existing cart reducers
     addToCart: (state, action) => {
       const item = state.products.find(
@@ -44,8 +57,11 @@ export const orebiSlice = createSlice({
         (item) => item._id !== action.payload
       );
     },
+
+    // Update resetCart to also clear coupon
     resetCart: (state) => {
       state.products = [];
+      state.couponDiscount = { discount: 0, code: "" };
     },
 
     // New wishlist reducers
@@ -102,6 +118,8 @@ export const {
   drecreaseQuantity,
   deleteItem,
   resetCart,
+  applyCoupon,
+  removeCoupon, 
   addToWishlist,
   removeFromWishlist,
   clearWishlist,

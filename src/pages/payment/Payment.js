@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux"; // Add useDispatch
+import { useSelector, useDispatch } from "react-redux"; 
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { FaCreditCard, FaPaypal } from "react-icons/fa";
-import { resetCart } from "../../redux/orebiSlice"; // Import resetCart
+import { resetCart } from "../../redux/orebiSlice"; 
 
 const Payment = () => {
   //navigate between between pages

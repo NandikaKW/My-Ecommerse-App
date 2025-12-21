@@ -12,7 +12,7 @@ const JournalDetail = () => {
 
   useEffect(() => {
     setPrevLocation(location.state?.data || "");
-    
+
     // Find the current post
     const currentPost = blogPosts.find(post => post.id === parseInt(id));
     setPost(currentPost);
@@ -45,7 +45,7 @@ const JournalDetail = () => {
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title={post.title} prevLocation={prevLocation} />
-      
+
       <article className="max-w-4xl mx-auto">
         {/* Post Header */}
         <header className="text-center mb-8">
@@ -119,7 +119,7 @@ const JournalDetail = () => {
         )}
 
         {/* Navigation */}
-        <div className="flex justify-between items-center border-t border-gray-200 pt-8">
+        <div className="flex justify-between items-center border-t border-gray-200 pt-8 pb-8">
           <Link
             to="/journal"
             className="bg-primeColor text-white px-6 py-2 rounded hover:bg-black transition duration-300"
@@ -133,6 +133,7 @@ const JournalDetail = () => {
             Continue Shopping
           </Link>
         </div>
+
       </article>
     </div>
   );

@@ -43,7 +43,7 @@ const SignIn = () => {
       return;
     }
 
-    // ============== Getting the value ==============
+    //  Getting the value 
     if (email && password) {
       setSuccessMsg(
         `Welcome back! You have successfully signed in.`

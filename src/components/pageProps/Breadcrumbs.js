@@ -6,6 +6,7 @@ const Breadcrumbs = ({ prevLocation, title }) => {
   const location = useLocation();
   const [locationPath, setLocationPath] = useState("");
   useEffect(() => {
+    //extract the location path
     setLocationPath(location.pathname.split("/")[1]);
   }, [location]);
 
@@ -27,5 +28,13 @@ const Breadcrumbs = ({ prevLocation, title }) => {
     </div>
   );
 };
+
+// Finds the current page URL
+
+// Extracts the page name from the URL
+
+// Displays it as a breadcrumb path
+
+//To help users know where they are on the website and how they got there.
 
 export default Breadcrumbs;

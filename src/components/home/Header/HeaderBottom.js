@@ -1,3 +1,4 @@
+// HeaderBottom.js - Updated with correct categories
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
@@ -14,10 +15,48 @@ const HeaderBottom = () => {
   const navigate = useNavigate();
   const ref = useRef();
   
+  // Define categories with their filter values based on your actual product categories
+  const categories = [
+    { 
+      id: 1, 
+      name: "Fashion", 
+      filterValue: "fashion",
+      icon: "👕",
+      productCount: paginationItems.filter(item => item.category === "Fashion").length
+    },
+    { 
+      id: 2, 
+      name: "Accessories", 
+      filterValue: "accessories",
+      icon: "👜",
+      productCount: paginationItems.filter(item => item.category === "Accessories").length
+    },
+    { 
+      id: 3, 
+      name: "Electronics", 
+      filterValue: "electronics",
+      icon: "📱",
+      productCount: paginationItems.filter(item => item.category === "Electronics").length
+    },
+    { 
+      id: 4, 
+      name: "Home Decor", 
+      filterValue: "home-decor",
+      icon: "🏠",
+      productCount: paginationItems.filter(item => item.category === "Home Decor").length
+    },
+    { 
+      id: 5, 
+      name: "Toys", 
+      filterValue: "toys",
+      icon: "🧸",
+      productCount: paginationItems.filter(item => item.category === "Toys").length
+    },
+  ];
+
   // FIXED: Safe click outside handler
   useEffect(() => {
     const handleClickOutside = (e) => {
-      // SAFE CHECK: Only call contains if ref.current exists
       if (ref.current && ref.current.contains(e.target)) {
         setShow(true);
       } else {
@@ -27,17 +66,29 @@ const HeaderBottom = () => {
 
     document.body.addEventListener("click", handleClickOutside);
     
-    // Cleanup function
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
-  }, []); // Removed show and ref from dependencies
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
+  };
+
+  // Handle category click - navigates to shop with category filter
+  const handleCategoryClick = (category) => {
+    // Navigate to shop page with category query parameter
+    navigate(`/shop?category=${category.filterValue}`);
+    setShow(false); // Close dropdown
+  };
+
+  // View all categories
+  const handleViewAllCategories = () => {
+    navigate('/shop');
+    setShow(false);
   };
 
   useEffect(() => {
@@ -54,39 +105,86 @@ const HeaderBottom = () => {
           <div
             onClick={() => setShow(!show)}
             ref={ref}
-            className="flex h-14 cursor-pointer items-center gap-2 text-primeColor"
+            className="flex h-14 cursor-pointer items-center gap-2 text-primeColor relative group"
           >
-            <HiOutlineMenuAlt4 className="w-5 h-5" />
+            <HiOutlineMenuAlt4 className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
             <p className="text-[14px] font-normal">Shop by Category</p>
 
+            {/* Categories Dropdown */}
             {show && (
-              <motion.ul
+              <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-36 z-50 bg-primeColor w-auto text-[#767676] h-auto p-4 pb-6"
+                transition={{ duration: 0.3 }}
+                className="absolute top-full left-0 mt-2 z-50 bg-white w-80 text-gray-800 h-auto rounded-xl shadow-2xl border border-gray-200 overflow-hidden"
               >
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Accessories
-                </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Furniture
-                </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Electronics
-                </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Clothes
-                </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Bags
-                </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                  Home appliances
-                </li>
-              </motion.ul>
+                {/* Dropdown Header */}
+                <div className="bg-black text-white p-4">
+                  <h3 className="font-semibold text-lg">Product Categories</h3>
+                  <p className="text-sm text-gray-300">Browse products by category</p>
+                </div>
+                
+                {/* Categories List */}
+                <div className="max-h-96 overflow-y-auto">
+                  {categories.map((category) => (
+                    <div
+                      key={category.id}
+                      onClick={() => handleCategoryClick(category)}
+                      className="flex items-center justify-between px-4 py-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{category.icon}</span>
+                        <div>
+                          <span className="font-medium text-gray-800">{category.name}</span>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {category.productCount} products available
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                          {category.productCount}
+                        </span>
+                        <svg 
+                          className="w-4 h-4 text-gray-400" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* View All Button */}
+                  <div
+                    onClick={handleViewAllCategories}
+                    className="px-4 py-4 bg-gray-50 hover:bg-gray-100 cursor-pointer text-center border-t border-b"
+                  >
+                    <span className="font-semibold text-black hover:text-primeColor transition-colors flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                      View All Products
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Category Help Text */}
+                <div className="px-4 py-3 bg-white border-t text-sm text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Click any category to filter products</span>
+                  </div>
+                </div>
+              </motion.div>
             )}
           </div>
+          
+          {/* Search Bar */}
           <div className="relative w-full lg:w-[600px] h-[50px] text-base text-primeColor bg-white flex items-center gap-2 justify-between px-6 rounded-xl">
             <input
               className="flex-1 h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px]"
@@ -98,7 +196,7 @@ const HeaderBottom = () => {
             <FaSearch className="w-5 h-5" />
             {searchQuery && (
               <div
-                className={`w-full mx-auto h-96 bg-white top-16 absolute left-0 z-50 overflow-y-scroll shadow-2xl scrollbar-hide cursor-pointer`}
+                className={`w-full mx-auto h-96 bg-white top-16 absolute left-0 z-50 overflow-y-scroll shadow-2xl scrollbar-hide cursor-pointer rounded-lg`}
               >
                 {searchQuery &&
                   filteredProducts.map((item) => (
@@ -117,62 +215,71 @@ const HeaderBottom = () => {
                         ) & setSearchQuery("")
                       }
                       key={item._id}
-                      className="max-w-[600px] h-28 bg-gray-100 mb-3 flex items-center gap-3"
+                      className="max-w-[600px] h-28 bg-gray-50 mb-3 flex items-center gap-3 p-4 hover:bg-gray-100 transition-colors"
                     >
-                      <img className="w-24" src={item.img} alt="productImg" />
+                      <img className="w-20 h-20 object-cover rounded" src={item.img} alt="productImg" />
                       <div className="flex flex-col gap-1">
                         <p className="font-semibold text-lg">
                           {item.productName}
                         </p>
-                        <p className="text-xs">{item.des}</p>
-                        <p className="text-sm">
-                          Price:{" "}
-                          <span className="text-primeColor font-semibold">
-                            ${item.price}
+                        <p className="text-xs text-gray-600">{item.des}</p>
+                        <div className="flex items-center gap-4">
+                          <p className="text-sm">
+                            Price:{" "}
+                            <span className="text-primeColor font-semibold">
+                              ${item.price}
+                            </span>
+                          </p>
+                          <span className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                            {item.category}
                           </span>
-                        </p>
+                        </div>
                       </div>
                     </div>
                   ))}
               </div>
             )}
           </div>
+          
+          {/* User & Cart Icons */}
           <div className="flex gap-4 mt-2 lg:mt-0 items-center pr-6 cursor-pointer relative">
-            <div onClick={() => setShowUser(!showUser)} className="flex">
-              <FaUser />
-              <FaCaretDown />
+            <div onClick={() => setShowUser(!showUser)} className="flex items-center gap-1">
+              <FaUser className="hover:text-black transition-colors" />
+              <FaCaretDown className={`transition-transform ${showUser ? 'rotate-180' : ''}`} />
             </div>
             {showUser && (
               <motion.ul
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-6 left-0 z-50 bg-primeColor w-44 text-[#767676] h-auto p-4 pb-6"
+                transition={{ duration: 0.3 }}
+                className="absolute top-10 right-0 z-50 bg-white w-48 text-gray-700 h-auto py-2 rounded-lg shadow-xl border border-gray-200"
               >
                 <Link to="/signin">
-                  <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                  <li className="px-4 py-3 hover:bg-gray-100 hover:text-black duration-300 cursor-pointer border-b">
                     Login
                   </li>
                 </Link>
                 <Link onClick={() => setShowUser(false)} to="/signup">
-                  <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                  <li className="px-4 py-3 hover:bg-gray-100 hover:text-black duration-300 cursor-pointer border-b">
                     Sign Up
                   </li>
                 </Link>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <li className="px-4 py-3 hover:bg-gray-100 hover:text-black duration-300 cursor-pointer border-b">
                   Profile
                 </li>
-                <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <li className="px-4 py-3 hover:bg-gray-100 hover:text-black duration-300 cursor-pointer">
                   Others
                 </li>
               </motion.ul>
             )}
-            <Link to="/cart">
-              <div className="relative">
-                <FaShoppingCart />
-                <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-primeColor text-white">
-                  {products.length > 0 ? products.length : 0}
-                </span>
+            <Link to="/cart" className="relative">
+              <div className="relative hover:text-black transition-colors">
+                <FaShoppingCart className="w-5 h-5" />
+                {products.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full animate-bounce">
+                    {products.length}
+                  </span>
+                )}
               </div>
             </Link>
           </div>

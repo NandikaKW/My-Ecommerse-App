@@ -13,6 +13,29 @@ import {
   newArrFour,
 } from "../assets/images/index";
 
+// Add this to your constants.js file
+export const productCategories = [
+  "Fashion",
+  "Accessories", 
+  "Electronics",
+  "Home Decor",
+  "Toys"
+];
+
+// Also add a mapping for URL-friendly names
+export const categoryUrlMap = {
+  'fashion': 'Fashion',
+  'accessories': 'Accessories',
+  'electronics': 'Electronics',
+  'home-decor': 'Home Decor',
+  'toys': 'Toys',
+  'home': 'Home Decor', // Alias for home-decor
+  'clothes': 'Fashion', // Alias for fashion
+  'bags': 'Accessories', // Alias for accessories
+  'furniture': 'Home Decor', // Alias for home decor
+  'home-appliances': 'Home Decor' // Alias for home decor
+};
+
 // =================== NavBarList Start here ====================
 export const navBarList = [
   {
